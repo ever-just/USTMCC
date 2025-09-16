@@ -172,3 +172,77 @@ document.addEventListener('DOMContentLoaded', function() {
             enhanceFormForMobile();
         }
     });
+
+    // Newsletter form validation
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            const emailInput = this.querySelector('input[type="email"]');
+            const submitBtn = this.querySelector('.newsletter-btn');
+            
+            // Enhanced email validation
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            
+            if (!emailRegex.test(emailInput.value)) {
+                e.preventDefault();
+                emailInput.style.borderColor = '#e53e3e';
+                emailInput.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.2)';
+                emailInput.focus();
+                
+                // Show error feedback
+                const originalPlaceholder = emailInput.placeholder;
+                emailInput.placeholder = 'Please enter a valid email address';
+                emailInput.value = '';
+                emailInput.style.animation = 'shake 0.5s ease-in-out';
+                
+                setTimeout(() => {
+                    emailInput.placeholder = originalPlaceholder;
+                    emailInput.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    emailInput.style.boxShadow = 'none';
+                    emailInput.style.animation = '';
+                }, 3000);
+                
+                return false;
+            }
+            
+            // Success feedback
+            if (submitBtn) {
+                submitBtn.innerHTML = '✓ Subscribed!';
+                submitBtn.disabled = true;
+                submitBtn.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = 'Subscribe';
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = 'white';
+                    emailInput.value = '';
+                }, 2500);
+            }
+        });
+        
+        // Real-time email validation with visual feedback
+        const emailInput = newsletterForm.querySelector('input[type="email"]');
+        if (emailInput) {
+            emailInput.addEventListener('input', function() {
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                
+                if (this.value && emailRegex.test(this.value)) {
+                    this.style.borderColor = 'rgba(76, 175, 80, 0.6)';
+                    this.style.background = 'rgba(76, 175, 80, 0.1)';
+                } else if (this.value) {
+                    this.style.borderColor = 'rgba(255, 193, 7, 0.6)';
+                    this.style.background = 'rgba(255, 255, 255, 0.1)';
+                } else {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    this.style.background = 'rgba(255, 255, 255, 0.1)';
+                }
+            });
+            
+            emailInput.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    this.style.background = 'rgba(255, 255, 255, 0.1)';
+                }
+            });
+        }
+    }
