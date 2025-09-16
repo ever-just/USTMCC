@@ -142,3 +142,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 250);
     });
 });
+
+    // Additional form enhancements for mobile
+    function enhanceFormForMobile() {
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            const inputs = contactForm.querySelectorAll('input, select, textarea');
+            
+            // Ensure clean initial state - no error styling on page load
+            inputs.forEach(input => {
+                input.classList.remove('error');
+                input.style.borderColor = '#E2E8F0';
+                input.style.boxShadow = 'none';
+                
+                // Prevent zoom on iOS when focusing inputs
+                if (window.innerWidth <= 768) {
+                    input.setAttribute('data-mobile-optimized', 'true');
+                }
+            });
+        }
+    }
+    
+    // Initialize mobile enhancements
+    enhanceFormForMobile();
+    
+    // Re-initialize on resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+            enhanceFormForMobile();
+        }
+    });
