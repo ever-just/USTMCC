@@ -724,3 +724,88 @@ html {
         margin-bottom: 2.5rem;
     }
 }
+
+/* Enhanced Mobile Footer Styles */
+@media (max-width: 600px) {
+    footer {
+        padding: 3rem 0 0;
+    }
+    
+    .footer-content {
+        gap: 2.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-logo {
+        margin-bottom: 1.2rem;
+    }
+    
+    .footer-logo-text h3 {
+        font-size: 1.2rem;
+    }
+    
+    .footer-description {
+        font-size: 0.95rem;
+        max-width: 350px;
+        margin-bottom: 0;
+    }
+    
+    .footer-links {
+        gap: 0.8rem;
+        max-width: 250px;
+    }
+    
+    .footer-links a {
+        padding: 0.7rem 1rem;
+        margin-bottom: 0.3rem;
+        border-radius: 6px;
+        font-size: 0.95rem;
+    }
+    
+    .newsletter-text {
+        max-width: 350px;
+        margin-bottom: 1.8rem;
+    }
+    
+    .newsletter-input-group {
+        max-width: 280px;
+        gap: 1rem;
+    }
+    
+    .newsletter-input-group input {
+        padding: 1rem 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    .newsletter-btn {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .footer-bottom {
+        padding: 1.8rem 0;
+    }
+    
+    .footer-bottom-content {
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .footer-legal {
+        gap: 0.8rem;
+    }
+    
+    .footer-legal a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.9rem;
+    }
+}
