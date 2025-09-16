@@ -108,55 +108,227 @@
                 <div class="partners-grid">
                     <div class="partner-category">
                         <h3>Corporate Partners</h3>
-                        <div class="partner-list">
-                            <div class="partner-item">
-                                <h4>Minnesota Business Leaders</h4>
-                                <p>Connecting students with Fortune 500 executives and local business leaders</p>
-                            </div>
-                            <div class="partner-item">
-                                <h4>Consulting Firms</h4>
-                                <p>Partnerships with regional and national consulting organizations</p>
+
+                <div class="partnership-configurator">
+                    <!-- Step 1: Welcome -->
+                    <div class="step step-welcome active" data-step="welcome">
+                        <div class="step-content">
+                            <div class="welcome-content">
+                                <h3>🤝 Partnership Opportunities</h3>
+                                <p>We offer diverse partnership opportunities to connect industry professionals with motivated UST students:</p>
+                                
+                                <div class="opportunity-preview">
+                                    <div class="opportunity-item">
+                                        <span class="opportunity-icon">🎤</span>
+                                        <div class="opportunity-text">
+                                            <h4>Guest Speaking</h4>
+                                            <p>Share your expertise with students</p>
+                                        </div>
+                                    </div>
+                                    <div class="opportunity-item">
+                                        <span class="opportunity-icon">🏢</span>
+                                        <div class="opportunity-text">
+                                            <h4>Office Visits</h4>
+                                            <p>Host our club at your workplace</p>
+                                        </div>
+                                    </div>
+                                    <div class="opportunity-item">
+                                        <span class="opportunity-icon">📊</span>
+                                        <div class="opportunity-text">
+                                            <h4>Case Projects</h4>
+                                            <p>Real consulting challenges for students</p>
+                                        </div>
+                                    </div>
+                                    <div class="opportunity-item">
+                                        <span class="opportunity-icon">🎯</span>
+                                        <div class="opportunity-text">
+                                            <h4>Mentorship</h4>
+                                            <p>Guide students in their career journey</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn primary" onclick="nextStep()">Start Partnership Application</button>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="partner-category">
-                        <h3>Academic Partners</h3>
-                        <div class="partner-list">
-                            <div class="partner-item">
-                                <h4>UST Business School</h4>
-                                <p>Direct collaboration with faculty and academic programs</p>
+
+                    <!-- Step 2: Contact Information -->
+                    <div class="step step-contact" data-step="contact">
+                        <div class="step-content">
+                            <div class="step-header">
+                                <h3>📝 Contact Information</h3>
+                                <p>Tell us about yourself and your organization</p>
                             </div>
-                            <div class="partner-item">
-                                <h4>Alumni Network</h4>
-                                <p>Active partnerships with UST graduates in consulting careers</p>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="partner-name">Full Name *</label>
+                                    <input type="text" id="partner-name" name="partner-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="partner-email">Email Address *</label>
+                                    <input type="email" id="partner-email" name="partner-email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="partner-company">Company/Organization *</label>
+                                    <input type="text" id="partner-company" name="partner-company" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="partner-title">Your Role/Title *</label>
+                                    <input type="text" id="partner-title" name="partner-title" required>
+                                </div>
+                            </div>
+                            
+                            <div class="step-navigation">
+                                <button class="step-btn secondary" onclick="prevStep()">Back</button>
+                                <button class="step-btn primary" onclick="nextStep()">Continue</button>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="partner-category">
-                        <h3>Community Partners</h3>
-                        <div class="partner-list">
-                            <div class="partner-item">
-                                <h4>Twin Cities Organizations</h4>
-                                <p>Non-profit and community organizations providing real client projects</p>
+
+                    <!-- Step 3: Partner Type -->
+                    <div class="step step-type" data-step="type">
+                        <div class="step-content">
+                            <div class="step-header">
+                                <h3>🏷️ Partner Type</h3>
+                                <p>Which category best describes you?</p>
                             </div>
-                            <div class="partner-item">
-                                <h4>Professional Associations</h4>
-                                <p>Partnerships with consulting and business professional associations</p>
+                            
+                            <div class="partner-type-grid">
+                                <div class="partner-type-card" data-type="corporate">
+                                    <span class="type-icon">🏢</span>
+                                    <h4>Corporate Executive</h4>
+                                    <p>Fortune 500, large enterprises, business leaders</p>
+                                </div>
+                                <div class="partner-type-card" data-type="consulting">
+                                    <span class="type-icon">📈</span>
+                                    <h4>Consulting Professional</h4>
+                                    <p>Management consulting firms, independent consultants</p>
+                                </div>
+                                <div class="partner-type-card" data-type="alumni">
+                                    <span class="type-icon">🎓</span>
+                                    <h4>UST Alumni</h4>
+                                    <p>University of St. Thomas graduates in business</p>
+                                </div>
+                                <div class="partner-type-card" data-type="faculty">
+                                    <span class="type-icon">📚</span>
+                                    <h4>University Faculty</h4>
+                                    <p>Academic professionals, researchers, administrators</p>
+                                </div>
+                                <div class="partner-type-card" data-type="nonprofit">
+                                    <span class="type-icon">🌟</span>
+                                    <h4>Non-profit Leader</h4>
+                                    <p>NGOs, social enterprises, community organizations</p>
+                                </div>
+                                <div class="partner-type-card" data-type="entrepreneur">
+                                    <span class="type-icon">💡</span>
+                                    <h4>Entrepreneur</h4>
+                                    <p>Startup founders, business owners, innovators</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-navigation">
+                                <button class="step-btn secondary" onclick="prevStep()">Back</button>
+                                <button class="step-btn primary disabled" id="type-continue" onclick="nextStep()" disabled>Continue</button>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="partnership-cta">
-                    <h3>Interested in Partnering with UST MCC?</h3>
-                    <p>We're always looking for new opportunities to provide our members with real-world consulting experience.</p>
-                    <a href="#contact" class="partner-cta-btn">Get In Touch</a>
+
+                    <!-- Step 4: Partnership Interests -->
+                    <div class="step step-interests" data-step="interests">
+                        <div class="step-content">
+                            <div class="step-header">
+                                <h3>💼 Partnership Opportunities</h3>
+                                <p id="interests-description">How would you like to partner with us?</p>
+                            </div>
+                            
+                            <div class="interests-container" id="interests-container">
+                                <!-- Dynamic content populated by JavaScript -->
+                            </div>
+                            
+                            <div class="step-navigation">
+                                <button class="step-btn secondary" onclick="prevStep()">Back</button>
+                                <button class="step-btn primary disabled" id="interests-continue" onclick="nextStep()" disabled>Continue</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Logistics -->
+                    <div class="step step-logistics" data-step="logistics">
+                        <div class="step-content">
+                            <div class="step-header">
+                                <h3>📅 Logistics & Details</h3>
+                                <p id="logistics-description">Let's plan the details</p>
+                            </div>
+                            
+                            <div class="logistics-container" id="logistics-container">
+                                <!-- Dynamic content populated by JavaScript -->
+                            </div>
+                            
+                            <div class="step-navigation">
+                                <button class="step-btn secondary" onclick="prevStep()">Back</button>
+                                <button class="step-btn primary disabled" id="logistics-continue" onclick="nextStep()" disabled>Continue</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Summary & Submit -->
+                    <div class="step step-summary" data-step="summary">
+                        <div class="step-content">
+                            <div class="step-header">
+                                <h3>✅ Partnership Summary</h3>
+                                <p>Review your partnership proposal</p>
+                            </div>
+                            
+                            <div class="summary-content" id="summary-content">
+                                <!-- Summary populated by JavaScript -->
+                            </div>
+                            
+                            <form class="partnership-final-form" action="https://formspree.io/f/xdovwwqy" method="POST">
+                                <input type="hidden" id="final-data" name="partnership-data">
+                                <input type="hidden" name="_subject" value="Partnership Application - UST MCC">
+                                <input type="hidden" name="_replyto" value="miga3660@stthomas.edu">
+                                <input type="hidden" name="form_type" value="partnership">
+                                
+                                <div class="step-navigation">
+                                    <button type="button" class="step-btn secondary" onclick="prevStep()">Back</button>
+                                    <button type="submit" class="step-btn primary">Submit Partnership Application</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Progress Indicator -->
+                    <div class="progress-indicator">
+                        <div class="progress-step active" data-target="welcome">
+                            <span class="step-number">1</span>
+                            <span class="step-label">Welcome</span>
+                        </div>
+                        <div class="progress-step" data-target="contact">
+                            <span class="step-number">2</span>
+                            <span class="step-label">Contact</span>
+                        </div>
+                        <div class="progress-step" data-target="type">
+                            <span class="step-number">3</span>
+                            <span class="step-label">Type</span>
+                        </div>
+                        <div class="progress-step" data-target="interests">
+                            <span class="step-number">4</span>
+                            <span class="step-label">Interests</span>
+                        </div>
+                        <div class="progress-step" data-target="logistics">
+                            <span class="step-number">5</span>
+                            <span class="step-label">Logistics</span>
+                        </div>
+                        <div class="progress-step" data-target="summary">
+                            <span class="step-number">6</span>
+                            <span class="step-label">Summary</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
         <section id="resources" class="resources">
             <div class="container">
                 <h2>Member Resources</h2>
