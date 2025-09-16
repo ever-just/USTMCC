@@ -10,8 +10,11 @@
     <header>
         <nav>
             <div class="logo">
-                <h1>UST MCC</h1>
-                <p class="logo-subtitle">University of St. Thomas</p>
+                <img src="MCC-Logo.jpeg" alt="UST MCC Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>UST MCC</h1>
+                    <p class="logo-subtitle">University of St. Thomas</p>
+                </div>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -20,6 +23,9 @@
                 <li><a href="#resources">Resources</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span>☰</span>
+            </button>
         </nav>
     </header>
 
@@ -119,17 +125,64 @@
             <div class="container">
                 <h2>Get Involved</h2>
                 <p>Ready to join the next generation of strategic consultants at St. Thomas?</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h3>Join Our Organization</h3>
-                        <p><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub" target="_blank">Visit our TommieLink page</a></p>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <h3>Join Our Organization</h3>
+                            <p><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub" target="_blank">Visit our TommieLink page</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>Upcoming Events</h3>
+                            <p><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub/events" target="_blank">View events and meetings</a></p>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <h3>Upcoming Events</h3>
-                        <p><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub/events" target="_blank">View events and meetings</a></p>
+                    
+                    <div class="contact-form-section">
+                        <h3>Contact Us</h3>
+                        <form class="contact-form" action="https://formspree.io/f/xdovwwqy" method="POST">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="year">Class Year</label>
+                                <select id="year" name="year">
+                                    <option value="">Select Year</option>
+                                    <option value="Freshman">Freshman</option>
+                                    <option value="Sophomore">Sophomore</option>
+                                    <option value="Junior">Junior</option>
+                                    <option value="Senior">Senior</option>
+                                    <option value="Graduate">Graduate Student</option>
+                                    <option value="Alumni">Alumni</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="interest">Area of Interest</label>
+                                <select id="interest" name="interest">
+                                    <option value="">Select Interest</option>
+                                    <option value="General Membership">General Membership</option>
+                                    <option value="Case Competitions">Case Competitions</option>
+                                    <option value="Networking Events">Networking Events</option>
+                                    <option value="Leadership Opportunities">Leadership Opportunities</option>
+                                    <option value="Professional Development">Professional Development</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Tell us about your interest in the club..." required></textarea>
+                            </div>
+                            <input type="hidden" name="_next" value="https://management-consulting.club">
+                            <input type="hidden" name="_subject" value="New Contact Form Submission - UST MCC">
+                            <input type="hidden" name="_replyto" value="miga3660@stthomas.edu">
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
                     </div>
                 </div>
-                <p class="contact-email">Questions? Email us at <a href="mailto:info@management-consulting.club">info@management-consulting.club</a></p>
             </div>
         </section>
     </main>
@@ -143,4 +196,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
