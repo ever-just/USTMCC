@@ -246,3 +246,563 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+// Partnership Configurator Logic
+let partnershipData = {
+    currentStep: 'welcome',
+    formData: {},
+    selectedType: null,
+    selectedInterests: [],
+    logisticsData: {}
+};
+
+function nextStep() {
+    const currentStep = partnershipData.currentStep;
+    let nextStepName = '';
+    
+    // Validate current step before proceeding
+    if (!validateCurrentStep()) {
+        return;
+    }
+    
+    // Determine next step
+    switch (currentStep) {
+        case 'welcome':
+            nextStepName = 'contact';
+            break;
+        case 'contact':
+            nextStepName = 'type';
+            break;
+        case 'type':
+            nextStepName = 'interests';
+            populateInterests();
+            break;
+        case 'interests':
+            nextStepName = 'logistics';
+            populateLogistics();
+            break;
+        case 'logistics':
+            nextStepName = 'summary';
+            populateSummary();
+            break;
+        default:
+            return;
+    }
+    
+    showStep(nextStepName);
+}
+
+function prevStep() {
+    const currentStep = partnershipData.currentStep;
+    let prevStepName = '';
+    
+    switch (currentStep) {
+        case 'contact':
+            prevStepName = 'welcome';
+            break;
+        case 'type':
+            prevStepName = 'contact';
+            break;
+        case 'interests':
+            prevStepName = 'type';
+            break;
+        case 'logistics':
+            prevStepName = 'interests';
+            break;
+        case 'summary':
+            prevStepName = 'logistics';
+            break;
+        default:
+            return;
+    }
+    
+    showStep(prevStepName);
+}
+
+function showStep(stepName) {
+    // Hide all steps
+    document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active');
+    });
+    
+    // Show target step
+    const targetStep = document.querySelector(`[data-step="${stepName}"]`);
+    if (targetStep) {
+        setTimeout(() => {
+            targetStep.classList.add('active');
+        }, 100);
+    }
+    
+    // Update progress indicator
+    updateProgressIndicator(stepName);
+    
+    // Update current step
+    partnershipData.currentStep = stepName;
+    
+    // Scroll to top of configurator
+    document.querySelector('.partnership-configurator').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+    });
+}
+
+function updateProgressIndicator(currentStep) {
+    const steps = ['welcome', 'contact', 'type', 'interests', 'logistics', 'summary'];
+    const currentIndex = steps.indexOf(currentStep);
+    
+    document.querySelectorAll('.progress-step').forEach((step, index) => {
+        step.classList.remove('active', 'completed');
+        
+        if (index < currentIndex) {
+            step.classList.add('completed');
+        } else if (index === currentIndex) {
+            step.classList.add('active');
+        }
+    });
+}
+
+function validateCurrentStep() {
+    const currentStep = partnershipData.currentStep;
+    
+    switch (currentStep) {
+        case 'welcome':
+            return true;
+            
+        case 'contact':
+            // Collect contact form data
+            const name = document.getElementById('partner-name').value.trim();
+            const email = document.getElementById('partner-email').value.trim();
+            const company = document.getElementById('partner-company').value.trim();
+            const title = document.getElementById('partner-title').value.trim();
+            
+            if (!name || !email || !company || !title) {
+                alert('Please fill in all required fields');
+                return false;
+            }
+            
+            partnershipData.formData = { name, email, company, title };
+            return true;
+            
+        case 'type':
+            if (!partnershipData.selectedType) {
+                alert('Please select your partner type');
+                return false;
+            }
+            return true;
+            
+        case 'interests':
+            if (partnershipData.selectedInterests.length === 0) {
+                alert('Please select at least one partnership interest');
+                return false;
+            }
+            return true;
+            
+        case 'logistics':
+            // Validate logistics based on selected interests
+            return validateLogistics();
+            
+        default:
+            return true;
+    }
+}
+
+function validateLogistics() {
+    const logisticsInputs = document.querySelectorAll('#logistics-container input[required], #logistics-container select[required]');
+    
+    for (let input of logisticsInputs) {
+        if (!input.value.trim()) {
+            input.focus();
+            input.style.borderColor = '#e53e3e';
+            setTimeout(() => {
+                input.style.borderColor = '#E2E8F0';
+            }, 2000);
+            return false;
+        }
+    }
+    
+    // Collect logistics data
+    logisticsInputs.forEach(input => {
+        partnershipData.logisticsData[input.name] = input.value;
+    });
+    
+    return true;
+}
+
+// Partner type selection
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize partner type selection
+    document.querySelectorAll('.partner-type-card').forEach(card => {
+        card.addEventListener('click', function() {
+            // Remove selection from all cards
+            document.querySelectorAll('.partner-type-card').forEach(c => c.classList.remove('selected'));
+            
+            // Select this card
+            this.classList.add('selected');
+            partnershipData.selectedType = this.dataset.type;
+            
+            // Enable continue button
+            document.getElementById('type-continue').classList.remove('disabled');
+            document.getElementById('type-continue').disabled = false;
+        });
+    });
+});
+
+function populateInterests() {
+    const container = document.getElementById('interests-container');
+    const description = document.getElementById('interests-description');
+    const partnerType = partnershipData.selectedType;
+    
+    let interestOptions = [];
+    let customDescription = '';
+    
+    switch (partnerType) {
+        case 'corporate':
+        case 'consulting':
+            customDescription = 'How would your organization like to engage with our students?';
+            interestOptions = [
+                { id: 'speaking', icon: '🎤', title: 'Executive Speaking', desc: 'Present to students about industry trends and career paths' },
+                { id: 'office-visit', icon: '🏢', title: 'Office Tours & Visits', desc: 'Host students at your workplace for immersive experience' },
+                { id: 'case-projects', icon: '📊', title: 'Case Study Projects', desc: 'Provide real business challenges for student teams' },
+                { id: 'mentorship', icon: '👥', title: 'Executive Mentorship', desc: 'One-on-one guidance for high-potential students' },
+                { id: 'internships', icon: '💼', title: 'Internship Opportunities', desc: 'Offer internship positions for club members' },
+                { id: 'competitions', icon: '🏆', title: 'Case Competition Judging', desc: 'Judge student case competition presentations' }
+            ];
+            break;
+            
+        case 'alumni':
+            customDescription = 'How would you like to give back to current UST students?';
+            interestOptions = [
+                { id: 'alumni-speaking', icon: '🎓', title: 'Alumni Presentations', desc: 'Share your career journey and insights' },
+                { id: 'networking', icon: '🤝', title: 'Networking Events', desc: 'Connect with students at club events' },
+                { id: 'mentorship', icon: '👥', title: 'Alumni Mentorship', desc: 'Guide students as they start their careers' },
+                { id: 'job-referrals', icon: '📋', title: 'Job Referrals', desc: 'Help students find opportunities at your company' },
+                { id: 'panel-discussions', icon: '💬', title: 'Panel Discussions', desc: 'Participate in career and industry panels' }
+            ];
+            break;
+            
+        case 'faculty':
+            customDescription = 'How can we collaborate academically?';
+            interestOptions = [
+                { id: 'guest-lectures', icon: '📚', title: 'Guest Lectures', desc: 'Present in business or consulting courses' },
+                { id: 'research-collab', icon: '🔬', title: 'Research Collaboration', desc: 'Joint research projects with students' },
+                { id: 'academic-mentorship', icon: '🎯', title: 'Academic Mentorship', desc: 'Guide students in academic and career development' },
+                { id: 'curriculum-input', icon: '📖', title: 'Curriculum Input', desc: 'Help design practical learning experiences' }
+            ];
+            break;
+            
+        case 'nonprofit':
+            customDescription = 'How can we support your mission while providing student experience?';
+            interestOptions = [
+                { id: 'pro-bono-consulting', icon: '🤝', title: 'Pro Bono Consulting', desc: 'Student teams work on your strategic challenges' },
+                { id: 'nonprofit-speaking', icon: '🌟', title: 'Mission-Driven Speaking', desc: 'Present about social impact and purpose-driven careers' },
+                { id: 'volunteer-projects', icon: '❤️', title: 'Volunteer Projects', desc: 'Students volunteer while gaining professional experience' },
+                { id: 'board-shadowing', icon: '👀', title: 'Board Meeting Shadowing', desc: 'Students observe governance and strategic decisions' }
+            ];
+            break;
+            
+        case 'entrepreneur':
+            customDescription = 'How can we help students learn from your entrepreneurial journey?';
+            interestOptions = [
+                { id: 'startup-speaking', icon: '💡', title: 'Entrepreneur Speaking', desc: 'Share your startup journey and lessons learned' },
+                { id: 'startup-projects', icon: '🚀', title: 'Startup Consulting', desc: 'Students help solve business challenges' },
+                { id: 'pitch-coaching', icon: '🎯', title: 'Pitch & Presentation Coaching', desc: 'Help students develop presentation skills' },
+                { id: 'innovation-workshops', icon: '⚡', title: 'Innovation Workshops', desc: 'Lead workshops on creativity and problem-solving' }
+            ];
+            break;
+    }
+    
+    description.textContent = customDescription;
+    
+    // Populate interest options
+    container.innerHTML = interestOptions.map(option => `
+        <div class="interest-option" data-interest="${option.id}">
+            <span class="interest-icon">${option.icon}</span>
+            <div class="interest-text">
+                <h4>${option.title}</h4>
+                <p>${option.desc}</p>
+            </div>
+        </div>
+    `).join('');
+    
+    // Add click handlers for interest selection
+    document.querySelectorAll('.interest-option').forEach(option => {
+        option.addEventListener('click', function() {
+            const interestId = this.dataset.interest;
+            
+            if (this.classList.contains('selected')) {
+                // Deselect
+                this.classList.remove('selected');
+                partnershipData.selectedInterests = partnershipData.selectedInterests.filter(id => id !== interestId);
+            } else {
+                // Select (allow multiple selections)
+                this.classList.add('selected');
+                partnershipData.selectedInterests.push(interestId);
+            }
+            
+            // Enable/disable continue button
+            const continueBtn = document.getElementById('interests-continue');
+            if (partnershipData.selectedInterests.length > 0) {
+                continueBtn.classList.remove('disabled');
+                continueBtn.disabled = false;
+            } else {
+                continueBtn.classList.add('disabled');
+                continueBtn.disabled = true;
+            }
+        });
+    });
+}
+
+function populateLogistics() {
+    const container = document.getElementById('logistics-container');
+    const description = document.getElementById('logistics-description');
+    const interests = partnershipData.selectedInterests;
+    
+    let logisticsHTML = '';
+    
+    // Generate logistics questions based on selected interests
+    if (interests.includes('speaking') || interests.includes('alumni-speaking') || interests.includes('startup-speaking') || interests.includes('nonprofit-speaking')) {
+        logisticsHTML += `
+            <div class="logistics-section">
+                <h4>🎤 Speaking Engagement Details</h4>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="speaking-topics">Preferred Topics *</label>
+                        <input type="text" id="speaking-topics" name="speaking-topics" placeholder="e.g., Strategy, Leadership, Industry Trends" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="speaking-duration">Preferred Duration *</label>
+                        <select id="speaking-duration" name="speaking-duration" required>
+                            <option value="">Select Duration</option>
+                            <option value="30-45 minutes">30-45 minutes</option>
+                            <option value="1 hour">1 hour</option>
+                            <option value="1.5-2 hours">1.5-2 hours</option>
+                            <option value="Half day workshop">Half day workshop</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="speaking-frequency">Availability *</label>
+                        <select id="speaking-frequency" name="speaking-frequency" required>
+                            <option value="">Select Frequency</option>
+                            <option value="One-time">One-time presentation</option>
+                            <option value="Semester">Once per semester</option>
+                            <option value="Multiple">Multiple times per year</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    if (interests.includes('office-visit')) {
+        logisticsHTML += `
+            <div class="logistics-section">
+                <h4>🏢 Office Visit Details</h4>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="office-capacity">Group Size Capacity *</label>
+                        <select id="office-capacity" name="office-capacity" required>
+                            <option value="">Select Capacity</option>
+                            <option value="5-10 students">5-10 students</option>
+                            <option value="10-15 students">10-15 students</option>
+                            <option value="15-25 students">15-25 students</option>
+                            <option value="25+ students">25+ students</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="visit-type">Visit Format *</label>
+                        <select id="visit-type" name="visit-type" required>
+                            <option value="">Select Format</option>
+                            <option value="Office tour only">Office tour only</option>
+                            <option value="Tour + presentation">Tour + presentation</option>
+                            <option value="Tour + networking">Tour + networking session</option>
+                            <option value="Full immersion day">Full immersion day</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="visit-timing">Preferred Timing *</label>
+                        <select id="visit-timing" name="visit-timing" required>
+                            <option value="">Select Timing</option>
+                            <option value="Weekday morning">Weekday morning</option>
+                            <option value="Weekday afternoon">Weekday afternoon</option>
+                            <option value="Lunch time">Lunch time</option>
+                            <option value="After work">After work hours</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    if (interests.includes('case-projects') || interests.includes('pro-bono-consulting') || interests.includes('startup-projects')) {
+        logisticsHTML += `
+            <div class="logistics-section">
+                <h4>📊 Project Details</h4>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="project-duration">Project Duration *</label>
+                        <select id="project-duration" name="project-duration" required>
+                            <option value="">Select Duration</option>
+                            <option value="2-4 weeks">2-4 weeks</option>
+                            <option value="1 semester">1 semester (15 weeks)</option>
+                            <option value="Academic year">Full academic year</option>
+                            <option value="Ongoing">Ongoing partnership</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="team-size">Student Team Size *</label>
+                        <select id="team-size" name="team-size" required>
+                            <option value="">Select Team Size</option>
+                            <option value="1-2 students">1-2 students</option>
+                            <option value="3-4 students">3-4 students</option>
+                            <option value="5-6 students">5-6 students</option>
+                            <option value="Multiple teams">Multiple teams</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="project-scope">Project Scope *</label>
+                        <textarea id="project-scope" name="project-scope" placeholder="Describe the business challenge or project scope..." required></textarea>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    if (interests.includes('mentorship') || interests.includes('academic-mentorship')) {
+        logisticsHTML += `
+            <div class="logistics-section">
+                <h4>👥 Mentorship Details</h4>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="mentorship-type">Mentorship Format *</label>
+                        <select id="mentorship-type" name="mentorship-type" required>
+                            <option value="">Select Format</option>
+                            <option value="One-on-one">One-on-one mentoring</option>
+                            <option value="Small group">Small group mentoring (3-5 students)</option>
+                            <option value="Cohort">Cohort mentoring (10+ students)</option>
+                            <option value="As-needed">As-needed advice</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mentorship-frequency">Meeting Frequency *</label>
+                        <select id="mentorship-frequency" name="mentorship-frequency" required>
+                            <option value="">Select Frequency</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Bi-weekly">Bi-weekly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Quarterly">Quarterly</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mentorship-focus">Focus Areas *</label>
+                        <input type="text" id="mentorship-focus" name="mentorship-focus" placeholder="e.g., Career development, Technical skills, Industry knowledge" required>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Add general timing and logistics
+    logisticsHTML += `
+        <div class="logistics-section">
+            <h4>📅 General Logistics</h4>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="timeline">Preferred Timeline *</label>
+                    <select id="timeline" name="timeline" required>
+                        <option value="">Select Timeline</option>
+                        <option value="ASAP">As soon as possible</option>
+                        <option value="Fall 2024">Fall 2024 semester</option>
+                        <option value="Spring 2025">Spring 2025 semester</option>
+                        <option value="Summer 2025">Summer 2025</option>
+                        <option value="Academic year 2024-25">Academic year 2024-25</option>
+                        <option value="Flexible">Flexible timing</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="additional-notes">Additional Notes</label>
+                    <textarea id="additional-notes" name="additional-notes" placeholder="Any additional information, special requirements, or questions..."></textarea>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    description.textContent = customDescription;
+    container.innerHTML = logisticsHTML;
+    
+    // Add validation for logistics fields
+    const logisticsInputs = container.querySelectorAll('input, select, textarea');
+    logisticsInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            const requiredFields = container.querySelectorAll('[required]');
+            let allFilled = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    allFilled = false;
+                }
+            });
+            
+            const continueBtn = document.getElementById('logistics-continue');
+            if (allFilled) {
+                continueBtn.classList.remove('disabled');
+                continueBtn.disabled = false;
+            } else {
+                continueBtn.classList.add('disabled');
+                continueBtn.disabled = true;
+            }
+        });
+    });
+}
+
+function populateSummary() {
+    const container = document.getElementById('summary-content');
+    const data = partnershipData;
+    
+    // Create summary display
+    let summaryHTML = `
+        <div class="summary-section">
+            <h4>Contact Information</h4>
+            <div class="summary-item">
+                <span class="summary-label">Name:</span>
+                <span class="summary-value">${data.formData.name}</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Email:</span>
+                <span class="summary-value">${data.formData.email}</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Organization:</span>
+                <span class="summary-value">${data.formData.company}</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Role:</span>
+                <span class="summary-value">${data.formData.title}</span>
+            </div>
+        </div>
+        
+        <div class="summary-section">
+            <h4>Partnership Details</h4>
+            <div class="summary-item">
+                <span class="summary-label">Partner Type:</span>
+                <span class="summary-value">${data.selectedType?.replace('-', ' ')}</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">Interests:</span>
+                <span class="summary-value">${data.selectedInterests.join(', ')}</span>
+            </div>
+        </div>
+    `;
+    
+    container.innerHTML = summaryHTML;
+    
+    // Prepare final form data
+    const finalData = {
+        ...data.formData,
+        partnerType: data.selectedType,
+        interests: data.selectedInterests,
+        logistics: data.logisticsData,
+        submittedAt: new Date().toISOString()
+    };
+    
+    document.getElementById('final-data').value = JSON.stringify(finalData, null, 2);
+}
