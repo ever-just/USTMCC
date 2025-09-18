@@ -1098,3 +1098,89 @@ function setupInterestClickHandlers() {
         });
     });
 }
+
+// Additional corporate partnership options
+function addMoreCorporateOptions() {
+    return [
+        { id: 'speaking', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>', title: 'Executive Speaking', desc: 'Present to students about industry trends and career paths' },
+        { id: 'office-visit', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M16 12v.01"/><path d="M16 15v.01"/></svg>', title: 'Office Tours & Visits', desc: 'Host students at your workplace for immersive experience' },
+        { id: 'case-projects', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>', title: 'Case Study Projects', desc: 'Provide real business challenges for student teams' },
+        { id: 'mentorship', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Executive Mentorship', desc: 'One-on-one guidance for high-potential students' },
+        { id: 'internships', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>', title: 'Internship Opportunities', desc: 'Offer internship positions for club members' },
+        { id: 'competitions', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>', title: 'Case Competition Judging', desc: 'Judge student case competition presentations' },
+        { id: 'sponsorship', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6"/><path d="M1 12h6m6 0h6"/></svg>', title: 'Event Sponsorship', desc: 'Sponsor club events and activities' },
+        { id: 'recruiting', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>', title: 'Campus Recruiting', desc: 'Recruit students for full-time positions' },
+        { id: 'other-corporate', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>', title: 'Other Partnership', desc: 'Custom partnership opportunity', hasInput: true }
+    ];
+}
+
+// Fix Continue button issue by ensuring proper event listener setup
+function fixContinueButtonLogic() {
+    // Reset interests selection state
+    partnershipData.selectedInterests = [];
+    
+    // Ensure continue button starts disabled
+    const continueBtn = document.getElementById('interests-continue');
+    if (continueBtn) {
+        continueBtn.classList.add('disabled');
+        continueBtn.disabled = true;
+    }
+}
+
+// Enhanced setup for all interest options
+function setupEnhancedInterestHandlers() {
+    setTimeout(() => {
+        const continueBtn = document.getElementById('interests-continue');
+        
+        document.querySelectorAll('.interest-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const interestId = this.dataset.interest;
+                
+                if (this.classList.contains('selected')) {
+                    // Deselect
+                    this.classList.remove('selected');
+                    partnershipData.selectedInterests = partnershipData.selectedInterests.filter(id => id !== interestId);
+                    
+                    // Hide input if exists
+                    const otherInput = this.querySelector('.other-input');
+                    if (otherInput) {
+                        otherInput.style.display = 'none';
+                        otherInput.value = '';
+                    }
+                } else {
+                    // Select (allow multiple selections)
+                    this.classList.add('selected');
+                    if (!partnershipData.selectedInterests.includes(interestId)) {
+                        partnershipData.selectedInterests.push(interestId);
+                    }
+                    
+                    // Show input field if it has one
+                    const otherInput = this.querySelector('.other-input, .other-input-textarea');
+                    if (otherInput) {
+                        otherInput.style.display = 'block';
+                        otherInput.focus();
+                    }
+                }
+                
+                // Enable/disable continue button
+                if (partnershipData.selectedInterests.length > 0) {
+                    continueBtn.classList.remove('disabled');
+                    continueBtn.disabled = false;
+                } else {
+                    continueBtn.classList.add('disabled');
+                    continueBtn.disabled = true;
+                }
+            });
+        });
+    }, 100);
+}
+
+// Override populateInterests to use enhanced handler
+const originalPopulateInterests = window.populateInterests;
+window.populateInterests = function() {
+    if (originalPopulateInterests) {
+        originalPopulateInterests();
+    }
+    fixContinueButtonLogic();
+    setupEnhancedInterestHandlers();
+};
