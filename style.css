@@ -1660,3 +1660,73 @@ html {
     max-width: 300px;
     font-weight: 400;
 }
+
+/* Ultra Mobile Optimization for Partnership Configurator */
+@media (max-width: 480px) {
+    .partnership-configurator {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+        margin: 0 0.5rem;
+        min-height: 400px;
+    }
+    
+    .step-header h3 {
+        font-size: 1.8rem;
+    }
+    
+    .welcome-content h3 {
+        font-size: 2rem;
+    }
+    
+    .opportunity-item {
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+    }
+    
+    .opportunity-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .partner-type-card {
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+    }
+    
+    .type-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .interest-option {
+        padding: 1.5rem;
+        gap: 1rem;
+        border-radius: 12px;
+    }
+    
+    .step-navigation {
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .step-btn {
+        padding: 1.1rem;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+    
+    .progress-indicator {
+        gap: 0.8rem;
+        margin-top: 2rem;
+    }
+    
+    .step-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+    
+    .step-label {
+        font-size: 0.7rem;
+    }
+}
