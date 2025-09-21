@@ -862,67 +862,67 @@ function populateInterestsEnhanced() {
         case 'consulting':
             customDescription = 'How would your organization like to engage with our students?';
             interestOptions = [
-                { id: 'speaking', icon: '🎤', title: 'Executive Speaking', desc: 'Present to students about industry trends and career paths' },
-                { id: 'office-visit', icon: '🏢', title: 'Office Tours & Visits', desc: 'Host students at your workplace for immersive experience' },
-                { id: 'case-projects', icon: '📊', title: 'Case Study Projects', desc: 'Provide real business challenges for student teams' },
-                { id: 'mentorship', icon: '👥', title: 'Executive Mentorship', desc: 'One-on-one guidance for high-potential students' },
-                { id: 'internships', icon: '💼', title: 'Internship Opportunities', desc: 'Offer internship positions for club members' },
-                { id: 'competitions', icon: '🏆', title: 'Case Competition Judging', desc: 'Judge student case competition presentations' },
-                { id: 'sponsorship', icon: '💰', title: 'Event Sponsorship', desc: 'Sponsor club events and activities' },
-                { id: 'recruiting', icon: '🎯', title: 'Campus Recruiting', desc: 'Recruit students for full-time positions' },
-                { id: 'other-corporate', icon: '✨', title: 'Other Partnership', desc: 'Custom partnership opportunity', hasInput: true }
+                { id: 'speaking', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>', title: 'Executive Speaking', desc: 'Present to students about industry trends and career paths' },
+                { id: 'office-visit', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M16 12v.01"/><path d="M16 15v.01"/></svg>', title: 'Office Tours & Visits', desc: 'Host students at your workplace for immersive experience' },
+                { id: 'case-projects', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>', title: 'Case Study Projects', desc: 'Provide real business challenges for student teams' },
+                { id: 'mentorship', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Executive Mentorship', desc: 'One-on-one guidance for high-potential students' },
+                { id: 'internships', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>', title: 'Internship Opportunities', desc: 'Offer internship positions for club members' },
+                { id: 'competitions', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>', title: 'Case Competition Judging', desc: 'Judge student case competition presentations' },
+                { id: 'sponsorship', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>', title: 'Event Sponsorship', desc: 'Sponsor club events and activities' },
+                { id: 'recruiting', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6"/><path d="M1 12h6m6 0h6"/></svg>', title: 'Campus Recruiting', desc: 'Recruit students for full-time positions' },
+                { id: 'other-corporate', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>', title: 'Other Partnership', desc: 'Custom partnership opportunity', hasInput: true }
             ];
             break;
             
         case 'alumni':
             customDescription = 'How would you like to give back to current UST students?';
             interestOptions = [
-                { id: 'alumni-speaking', icon: '🎓', title: 'Alumni Presentations', desc: 'Share your career journey and insights' },
-                { id: 'networking', icon: '🤝', title: 'Networking Events', desc: 'Connect with students at club events' },
-                { id: 'mentorship', icon: '👥', title: 'Alumni Mentorship', desc: 'Guide students as they start their careers' },
-                { id: 'job-referrals', icon: '📋', title: 'Job Referrals', desc: 'Help students find opportunities at your company' },
-                { id: 'panel-discussions', icon: '💬', title: 'Panel Discussions', desc: 'Participate in career and industry panels' },
-                { id: 'mock-interviews', icon: '🗣️', title: 'Mock Interviews', desc: 'Help students practice interview skills' },
-                { id: 'other-alumni', icon: '✨', title: 'Other Way to Help', desc: 'Custom alumni contribution', hasInput: true }
+                { id: 'alumni-speaking', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 0 9 0 12 0v-5"/></svg>', title: 'Alumni Presentations', desc: 'Share your career journey and insights' },
+                { id: 'networking', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Networking Events', desc: 'Connect with students at club events' },
+                { id: 'mentorship', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Alumni Mentorship', desc: 'Guide students as they start their careers' },
+                { id: 'job-referrals', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>', title: 'Job Referrals', desc: 'Help students find opportunities at your company' },
+                { id: 'panel-discussions', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>', title: 'Panel Discussions', desc: 'Participate in career and industry panels' },
+                { id: 'mock-interviews', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>', title: 'Mock Interviews', desc: 'Help students practice interview skills' },
+                { id: 'other-alumni', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>', title: 'Other Way to Help', desc: 'Custom alumni contribution', hasInput: true }
             ];
             break;
             
         case 'faculty':
             customDescription = 'How can educational institutions collaborate?';
             interestOptions = [
-                { id: 'school-visits', icon: '🏫', title: 'School Exchange Visits', desc: 'Host UST students or visit your institution' },
-                { id: 'joint-programs', icon: '🤝', title: 'Joint Programs', desc: 'Collaborative academic or extracurricular programs' },
-                { id: 'guest-lectures', icon: '📚', title: 'Guest Lectures', desc: 'Present to students or invite UST speakers' },
-                { id: 'club-partnerships', icon: '👥', title: 'Student Club Partnerships', desc: 'Partnerships between student organizations' },
-                { id: 'academic-competitions', icon: '🏆', title: 'Academic Competitions', desc: 'Joint case competitions or academic challenges' },
-                { id: 'faculty-exchange', icon: '🔄', title: 'Faculty Exchange', desc: 'Faculty collaboration and knowledge sharing' },
-                { id: 'other-educational', icon: '✨', title: 'Other Collaboration', desc: 'Custom educational partnership', hasInput: true }
+                { id: 'school-visits', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M16 12v.01"/><path d="M16 15v.01"/></svg>', title: 'School Exchange Visits', desc: 'Host UST students or visit your institution' },
+                { id: 'joint-programs', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Joint Programs', desc: 'Collaborative academic or extracurricular programs' },
+                { id: 'guest-lectures', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>', title: 'Guest Lectures', desc: 'Present to students or invite UST speakers' },
+                { id: 'club-partnerships', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Student Club Partnerships', desc: 'Partnerships between student organizations' },
+                { id: 'academic-competitions', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>', title: 'Academic Competitions', desc: 'Joint case competitions or academic challenges' },
+                { id: 'faculty-exchange', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>', title: 'Faculty Exchange', desc: 'Faculty collaboration and knowledge sharing' },
+                { id: 'other-educational', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>', title: 'Other Collaboration', desc: 'Custom educational partnership', hasInput: true }
             ];
             break;
             
         case 'nonprofit':
             customDescription = 'How can we support your mission while providing student experience?';
             interestOptions = [
-                { id: 'pro-bono-consulting', icon: '🤝', title: 'Pro Bono Consulting', desc: 'Student teams work on your strategic challenges' },
-                { id: 'nonprofit-speaking', icon: '🌟', title: 'Mission-Driven Speaking', desc: 'Present about social impact and purpose-driven careers' },
-                { id: 'volunteer-projects', icon: '❤️', title: 'Volunteer Projects', desc: 'Students volunteer while gaining professional experience' },
-                { id: 'board-shadowing', icon: '👀', title: 'Board Meeting Shadowing', desc: 'Students observe governance and strategic decisions' },
-                { id: 'fundraising-support', icon: '💡', title: 'Fundraising Strategy', desc: 'Students help with fundraising and development' },
-                { id: 'impact-measurement', icon: '📊', title: 'Impact Measurement', desc: 'Help measure and communicate your social impact' },
-                { id: 'other-nonprofit', icon: '✨', title: 'Other Partnership', desc: 'Custom non-profit collaboration', hasInput: true }
+                { id: 'pro-bono-consulting', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Pro Bono Consulting', desc: 'Student teams work on your strategic challenges' },
+                { id: 'nonprofit-speaking', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9 17 14.74 18.18 21.02 12 17.77 5.82 21.02 7 14.74 2 9 8.91 8.26 12 2"/></svg>', title: 'Mission-Driven Speaking', desc: 'Present about social impact and purpose-driven careers' },
+                { id: 'volunteer-projects', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>', title: 'Volunteer Projects', desc: 'Students volunteer while gaining professional experience' },
+                { id: 'board-shadowing', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>', title: 'Board Meeting Shadowing', desc: 'Students observe governance and strategic decisions' },
+                { id: 'fundraising-support', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>', title: 'Fundraising Strategy', desc: 'Students help with fundraising and development' },
+                { id: 'impact-measurement', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>', title: 'Impact Measurement', desc: 'Help measure and communicate your social impact' },
+                { id: 'other-nonprofit', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>', title: 'Other Partnership', desc: 'Custom non-profit collaboration', hasInput: true }
             ];
             break;
             
         case 'entrepreneur':
             customDescription = 'How can students learn from your entrepreneurial journey?';
             interestOptions = [
-                { id: 'startup-speaking', icon: '💡', title: 'Entrepreneur Speaking', desc: 'Share your startup journey and lessons learned' },
-                { id: 'startup-projects', icon: '🚀', title: 'Startup Consulting', desc: 'Students help solve business challenges' },
-                { id: 'pitch-coaching', icon: '🎯', title: 'Pitch & Presentation Coaching', desc: 'Help students develop presentation skills' },
-                { id: 'innovation-workshops', icon: '⚡', title: 'Innovation Workshops', desc: 'Lead workshops on creativity and problem-solving' },
-                { id: 'startup-visits', icon: '🏢', title: 'Startup Office Tours', desc: 'Show students startup culture and environment' },
-                { id: 'investor-insights', icon: '💰', title: 'Investor Perspectives', desc: 'Share insights on funding and business development' },
-                { id: 'other-entrepreneur', icon: '✨', title: 'Other Opportunity', desc: 'Custom entrepreneurial partnership', hasInput: true }
+                { id: 'startup-speaking', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>', title: 'Entrepreneur Speaking', desc: 'Share your startup journey and lessons learned' },
+                { id: 'startup-projects', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>', title: 'Startup Consulting', desc: 'Students help solve business challenges' },
+                { id: 'pitch-coaching', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6"/><path d="M1 12h6m6 0h6"/></svg>', title: 'Pitch & Presentation Coaching', desc: 'Help students develop presentation skills' },
+                { id: 'innovation-workshops', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>', title: 'Innovation Workshops', desc: 'Lead workshops on creativity and problem-solving' },
+                { id: 'startup-visits', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M16 12v.01"/><path d="M16 15v.01"/></svg>', title: 'Startup Office Tours', desc: 'Show students startup culture and environment' },
+                { id: 'investor-insights', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>', title: 'Investor Perspectives', desc: 'Share insights on funding and business development' },
+                { id: 'other-entrepreneur', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>', title: 'Other Opportunity', desc: 'Custom entrepreneurial partnership', hasInput: true }
             ];
             break;
     }
@@ -936,7 +936,7 @@ function populateInterestsEnhanced() {
             <div class="interest-text">
                 <h4>${option.title}</h4>
                 <p>${option.desc}</p>
-                ${option.hasInput ? '<input type="text" class="other-input" placeholder="Please describe your custom partnership idea..." style="margin-top: 0.5rem; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; width: 100%;">' : ''}
+                ${option.hasInput ? '<input type="text" class="other-input" placeholder="Please describe your custom partnership idea..." style="margin-top: 0.8rem; padding: 0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; width: 100%; font-size: 0.9rem; transition: all 0.3s ease;" onfocus="this.style.borderColor=\'#663399\'; this.style.boxShadow=\'0 0 0 3px rgba(102, 51, 153, 0.1)\'" onblur="this.style.borderColor=\'#E2E8F0\'; this.style.boxShadow=\'none\'">' : ''}
             </div>
         </div>
     `).join('');
@@ -948,18 +948,32 @@ function populateInterestsEnhanced() {
     
     // Add click handlers for interest selection with proper continue button logic
     document.querySelectorAll('.interest-option').forEach(option => {
-        option.addEventListener('click', function() {
+        option.addEventListener('click', function(e) {
+            if (e.target.classList.contains('other-input')) {
+                return;
+            }
+            
             const interestId = this.dataset.interest;
             
             if (this.classList.contains('selected')) {
                 // Deselect
                 this.classList.remove('selected');
                 partnershipData.selectedInterests = partnershipData.selectedInterests.filter(id => id !== interestId);
+                
+                const otherInput = this.querySelector('.other-input');
+                if (otherInput) {
+                    otherInput.value = '';
+                }
             } else {
                 // Select (allow multiple selections)
                 this.classList.add('selected');
                 if (!partnershipData.selectedInterests.includes(interestId)) {
                     partnershipData.selectedInterests.push(interestId);
+                }
+                
+                const otherInput = this.querySelector('.other-input');
+                if (otherInput) {
+                    setTimeout(() => otherInput.focus(), 100);
                 }
             }
             
@@ -972,11 +986,53 @@ function populateInterestsEnhanced() {
                 continueBtn.disabled = true;
             }
         });
+        
+        // Handle other input field changes
+        const otherInput = option.querySelector('.other-input');
+        if (otherInput) {
+            otherInput.addEventListener('input', function() {
+                const interestId = option.dataset.interest;
+                if (this.value.trim()) {
+                    if (!option.classList.contains('selected')) {
+                        option.classList.add('selected');
+                        if (!partnershipData.selectedInterests.includes(interestId)) {
+                            partnershipData.selectedInterests.push(interestId);
+                        }
+                    }
+                    partnershipData.customInputs = partnershipData.customInputs || {};
+                    partnershipData.customInputs[interestId] = this.value.trim();
+                } else {
+                    // Remove custom text if empty
+                    if (partnershipData.customInputs) {
+                        delete partnershipData.customInputs[interestId];
+                    }
+                }
+                
+                // Update continue button state
+                if (partnershipData.selectedInterests.length > 0) {
+                    continueBtn.classList.remove('disabled');
+                    continueBtn.disabled = false;
+                } else {
+                    continueBtn.classList.add('disabled');
+                    continueBtn.disabled = true;
+                }
+            });
+        }
     });
 }
 
 // Override the original populateInterests function
 window.populateInterests = populateInterestsEnhanced;
+
+document.addEventListener('DOMContentLoaded', function() {
+    const startButton = document.querySelector('button[onclick*="nextStep"]');
+    if (startButton) {
+        startButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            nextStep();
+        });
+    }
+});
 
 // Enhanced partner type selection with 'Other' support
 document.addEventListener('DOMContentLoaded', function() {
@@ -1035,12 +1091,12 @@ function handleOtherPartnerType() {
         description.textContent = 'What type of partnership are you interested in?';
         
         const generalOptions = [
-            { id: 'speaking-general', icon: '🎤', title: 'Speaking Opportunities', desc: 'Present to students on your area of expertise' },
-            { id: 'site-visits', icon: '🏢', title: 'Site Visits', desc: 'Host students at your location' },
-            { id: 'collaboration', icon: '🤝', title: 'General Collaboration', desc: 'Work together on projects or initiatives' },
-            { id: 'mentorship-general', icon: '👥', title: 'Mentorship', desc: 'Guide and advise students' },
-            { id: 'events', icon: '🎯', title: 'Event Partnership', desc: 'Collaborate on events or activities' },
-            { id: 'other-custom', icon: '✨', title: 'Custom Partnership', desc: 'Describe your unique partnership idea', hasInput: true }
+            { id: 'speaking-general', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>', title: 'Speaking Opportunities', desc: 'Present to students on your area of expertise' },
+            { id: 'site-visits', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M16 12v.01"/><path d="M16 15v.01"/></svg>', title: 'Site Visits', desc: 'Host students at your location' },
+            { id: 'collaboration', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'General Collaboration', desc: 'Work together on projects or initiatives' },
+            { id: 'mentorship-general', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: 'Mentorship', desc: 'Guide and advise students' },
+            { id: 'events', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6"/><path d="M1 12h6m6 0h6"/></svg>', title: 'Event Partnership', desc: 'Collaborate on events or activities' },
+            { id: 'other-custom', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#663399" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>', title: 'Custom Partnership', desc: 'Describe your unique partnership idea', hasInput: true }
         ];
         
         container.innerHTML = generalOptions.map(option => `
@@ -1049,7 +1105,7 @@ function handleOtherPartnerType() {
                 <div class="interest-text">
                     <h4>${option.title}</h4>
                     <p>${option.desc}</p>
-                    ${option.hasInput ? '<textarea class="other-input" placeholder="Please describe your custom partnership idea in detail..." style="margin-top: 0.8rem; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; width: 100%; min-height: 80px; resize: vertical;"></textarea>' : ''}
+                    ${option.hasInput ? '<textarea class="other-input" placeholder="Please describe your custom partnership idea in detail..." style="margin-top: 0.8rem; padding: 0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; width: 100%; min-height: 80px; resize: vertical; font-size: 0.9rem; transition: all 0.3s ease;" onfocus="this.style.borderColor=\'#663399\'; this.style.boxShadow=\'0 0 0 3px rgba(102, 51, 153, 0.1)\'" onblur="this.style.borderColor=\'#E2E8F0\'; this.style.boxShadow=\'none\'"></textarea>' : ''}
                 </div>
             </div>
         `).join('');
@@ -1127,10 +1183,34 @@ function fixContinueButtonLogic() {
     }
 }
 
+
 // Enhanced setup for all interest options
 function setupEnhancedInterestHandlers() {
     setTimeout(() => {
-        const continueBtn = document.getElementById('interests-continue');
+        // Initialize partnership data if not exists
+        if (!window.partnershipData) {
+            window.partnershipData = {
+                selectedType: 'corporate',
+                selectedInterests: [],
+                contactInfo: {},
+                logistics: {},
+                currentStep: 1
+            };
+        }
+        
+        const continueBtn = document.querySelector('button[disabled="true"]') || document.querySelector('button:disabled');
+        if (!continueBtn) {
+            const allButtons = document.querySelectorAll('button');
+            const continueByText = Array.from(allButtons).find(btn => btn.textContent.trim() === 'Continue');
+            if (continueByText) {
+                continueByText.id = 'interests-continue';
+            }
+        }
+        
+        document.querySelectorAll('.interest-option').forEach(option => {
+            // Remove existing listeners to avoid duplicates
+            option.replaceWith(option.cloneNode(true));
+        });
         
         document.querySelectorAll('.interest-option').forEach(option => {
             option.addEventListener('click', function() {
@@ -1139,10 +1219,10 @@ function setupEnhancedInterestHandlers() {
                 if (this.classList.contains('selected')) {
                     // Deselect
                     this.classList.remove('selected');
-                    partnershipData.selectedInterests = partnershipData.selectedInterests.filter(id => id !== interestId);
+                    window.partnershipData.selectedInterests = window.partnershipData.selectedInterests.filter(id => id !== interestId);
                     
                     // Hide input if exists
-                    const otherInput = this.querySelector('.other-input');
+                    const otherInput = this.querySelector('.other-input, .other-input-textarea');
                     if (otherInput) {
                         otherInput.style.display = 'none';
                         otherInput.value = '';
@@ -1150,8 +1230,8 @@ function setupEnhancedInterestHandlers() {
                 } else {
                     // Select (allow multiple selections)
                     this.classList.add('selected');
-                    if (!partnershipData.selectedInterests.includes(interestId)) {
-                        partnershipData.selectedInterests.push(interestId);
+                    if (!window.partnershipData.selectedInterests.includes(interestId)) {
+                        window.partnershipData.selectedInterests.push(interestId);
                     }
                     
                     // Show input field if it has one
@@ -1162,13 +1242,27 @@ function setupEnhancedInterestHandlers() {
                     }
                 }
                 
-                // Enable/disable continue button
-                if (partnershipData.selectedInterests.length > 0) {
-                    continueBtn.classList.remove('disabled');
-                    continueBtn.disabled = false;
-                } else {
-                    continueBtn.classList.add('disabled');
-                    continueBtn.disabled = true;
+                // Enable/disable continue button - find it dynamically
+                const currentContinueBtn = document.getElementById('interests-continue') || 
+                                         document.querySelector('button[disabled="true"]') ||
+                                         Array.from(document.querySelectorAll('button')).find(btn => btn.textContent.trim() === 'Continue');
+                
+                if (currentContinueBtn) {
+                    if (window.partnershipData.selectedInterests.length > 0) {
+                        currentContinueBtn.classList.remove('disabled');
+                        currentContinueBtn.disabled = false;
+                        currentContinueBtn.removeAttribute('disabled');
+                        currentContinueBtn.style.opacity = '1';
+                        currentContinueBtn.style.cursor = 'pointer';
+                        currentContinueBtn.style.backgroundColor = '#663399';
+                        currentContinueBtn.style.color = 'white';
+                    } else {
+                        currentContinueBtn.classList.add('disabled');
+                        currentContinueBtn.disabled = true;
+                        currentContinueBtn.setAttribute('disabled', 'true');
+                        currentContinueBtn.style.opacity = '0.5';
+                        currentContinueBtn.style.cursor = 'not-allowed';
+                    }
                 }
             });
         });
