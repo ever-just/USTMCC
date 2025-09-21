@@ -389,10 +389,11 @@ section {
 /* Contact Form */
 .contact-form-section {
     background: linear-gradient(135deg, #FAFBFC 0%, #F7F9FC 100%);
-    padding: 3rem;
+    padding: 3.5rem;
     border-radius: 24px;
     border: 1px solid rgba(102, 51, 153, 0.1);
     box-shadow: 0 8px 40px rgba(102, 51, 153, 0.08);
+    margin-top: 2rem;
 }
 
 .contact-form-section h3 {
@@ -404,24 +405,38 @@ section {
     font-size: 1.5rem;
 }
 
+.form-group {
+    margin-bottom: 2rem;
+}
+
 .form-group label {
     color: #663399;
     font-weight: 600;
-    margin-bottom: 0.6rem;
-    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-size: 0.95rem;
     letter-spacing: 0.3px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-    padding: 1rem 1.2rem;
+    padding: 1.2rem 1.4rem;
     border: 2px solid #E2E8F0;
     border-radius: 12px;
+    width: 100%;
     font-size: 1rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: white;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
     font-family: 'Inter', sans-serif;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: rgba(102, 51, 153, 0.3);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .form-group input:focus,
@@ -430,6 +445,7 @@ section {
     outline: none;
     border-color: #663399;
     box-shadow: 0 0 0 4px rgba(102, 51, 153, 0.1);
+    background: white;
     transform: translateY(-2px);
 }
 
@@ -443,7 +459,7 @@ section {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     box-shadow: 0 8px 32px rgba(102, 51, 153, 0.2);
 }
 
@@ -572,6 +588,19 @@ html {
         margin-bottom: 2.5rem;
         padding: 0 10px;
     }
+}
+
+/* Enhanced textarea styling */
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+    padding: 1.4rem 1.4rem;
+}
+
+.form-group textarea::placeholder {
+    color: #A0AEC0;
+    font-style: italic;
 }
 
 /* Fix form error states - no red borders on load */
