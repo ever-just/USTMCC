@@ -410,6 +410,198 @@ section {
     font-size: 0.85rem;
 }
 
+.officer-bio {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 1rem 0 1.5rem;
+    font-style: italic;
+}
+
+.officer-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.officer-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+.bio-link {
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.bio-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.linkedin-link {
+    background: #0077b5;
+    color: #FFFFFF;
+    border: 1px solid #0077b5;
+}
+
+.linkedin-link:hover {
+    background: #005885;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 119, 181, 0.4);
+}
+
+.officer-links svg {
+    flex-shrink: 0;
+}
+
+.bio-page {
+    padding: 6rem 2rem 4rem;
+    background: linear-gradient(135deg, #663399 0%, #512888 100%);
+    min-height: 100vh;
+}
+
+.bio-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    color: #FFD700;
+    transform: translateX(-5px);
+}
+
+.bio-header h1 {
+    color: #FFFFFF;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.bio-title {
+    color: #FFD700;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.bio-social {
+    margin-top: 2rem;
+}
+
+.linkedin-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #0077b5;
+    color: #FFFFFF;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid #0077b5;
+}
+
+.linkedin-button:hover {
+    background: #005885;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 119, 181, 0.4);
+}
+
+.bio-content {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 3rem;
+    border-radius: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.bio-section {
+    margin-bottom: 3rem;
+}
+
+.bio-section:last-child {
+    margin-bottom: 0;
+}
+
+.bio-section h2 {
+    color: #663399;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.bio-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #663399, #FFD700);
+    border-radius: 2px;
+}
+
+.bio-section p {
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
+
+.bio-list {
+    list-style: none;
+    padding: 0;
+}
+
+.bio-list li {
+    color: #333;
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.bio-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #663399;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 /* Resources Section */
 .resources {
     background: #FAFBFC;
