@@ -1,7 +1,7 @@
 // UST Management Consulting Club Website JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Enhanced mobile menu functionality
+    // Enhanced mobile menu functionality with ARIA attributes
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     const header = document.querySelector('header');
@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             navLinks.classList.toggle('active');
             const isActive = navLinks.classList.contains('active');
-            this.innerHTML = isActive ? '<span>✕</span>' : '<span>☰</span>';
+            this.innerHTML = isActive ? '<span aria-hidden="true">✕</span>' : '<span aria-hidden="true">☰</span>';
+            this.setAttribute('aria-expanded', isActive);
             document.body.style.overflow = isActive ? 'hidden' : '';
         });
     }
@@ -21,11 +22,142 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!header.contains(e.target) && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
             if (mobileMenuBtn) {
-                mobileMenuBtn.innerHTML = '<span>☰</span>';
+                mobileMenuBtn.innerHTML = '<span aria-hidden="true">☰</span>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
             }
             document.body.style.overflow = '';
         }
     });
+
+    const contactForm = document.querySelector('.contact-form');
+    
+    if (contactForm) {
+        // Real-time validation for required fields
+        const nameInput = contactForm.querySelector('#name');
+        const emailInput = contactForm.querySelector('#email');
+        const messageInput = contactForm.querySelector('#message');
+        
+        function validateField(input, errorSpanId, validationFn) {
+            const errorSpan = document.getElementById(errorSpanId);
+            if (!errorSpan) return true;
+            
+            const value = input.value.trim();
+            const error = validationFn(value);
+            
+            if (error) {
+                input.classList.add('error');
+                input.classList.remove('success');
+                errorSpan.textContent = error;
+                return false;
+            } else {
+                input.classList.remove('error');
+                input.classList.add('success');
+                errorSpan.textContent = '';
+                return true;
+            }
+        }
+        
+        function validateName(value) {
+            if (!value) return 'Name is required';
+            if (value.length < 2) return 'Name must be at least 2 characters';
+            return '';
+        }
+        
+        function validateEmail(value) {
+            if (!value) return 'Email is required';
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) return 'Please enter a valid email address';
+            return '';
+        }
+        
+        function validateMessage(value) {
+            if (!value) return 'Message is required';
+            if (value.length < 10) return 'Message must be at least 10 characters';
+            return '';
+        }
+        
+        // Add blur validation
+        if (nameInput) {
+            nameInput.addEventListener('blur', () => {
+                validateField(nameInput, 'name-error', validateName);
+            });
+            nameInput.addEventListener('input', () => {
+                if (nameInput.classList.contains('error')) {
+                    validateField(nameInput, 'name-error', validateName);
+                }
+            });
+        }
+        
+        if (emailInput) {
+            emailInput.addEventListener('blur', () => {
+                validateField(emailInput, 'email-error', validateEmail);
+            });
+            emailInput.addEventListener('input', () => {
+                if (emailInput.classList.contains('error')) {
+                    validateField(emailInput, 'email-error', validateEmail);
+                }
+            });
+        }
+        
+        if (messageInput) {
+            messageInput.addEventListener('blur', () => {
+                validateField(messageInput, 'message-error', validateMessage);
+            });
+            messageInput.addEventListener('input', () => {
+                if (messageInput.classList.contains('error')) {
+                    validateField(messageInput, 'message-error', validateMessage);
+                }
+            });
+        }
+        
+        // Form submission validation
+        contactForm.addEventListener('submit', function(e) {
+            const nameValid = nameInput ? validateField(nameInput, 'name-error', validateName) : true;
+            const emailValid = emailInput ? validateField(emailInput, 'email-error', validateEmail) : true;
+            const messageValid = messageInput ? validateField(messageInput, 'message-error', validateMessage) : true;
+            
+            if (!nameValid || !emailValid || !messageValid) {
+                e.preventDefault();
+                
+                if (!nameValid && nameInput) {
+                    nameInput.focus();
+                } else if (!emailValid && emailInput) {
+                    emailInput.focus();
+                } else if (!messageValid && messageInput) {
+                    messageInput.focus();
+                }
+            } else {
+                const submitBtn = this.querySelector('.submit-btn');
+                if (submitBtn) {
+                    submitBtn.innerHTML = 'Sending...';
+                    submitBtn.disabled = true;
+                    submitBtn.style.background = 'linear-gradient(135deg, #999999 0%, #777777 100%)';
+                }
+            }
+        });
+    }
+    
+    // Newsletter form validation
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+        const newsletterInput = newsletterForm.querySelector('#newsletter_email');
+        
+        if (newsletterInput) {
+            newsletterInput.addEventListener('blur', () => {
+                const value = newsletterInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (value && !emailRegex.test(value)) {
+                    newsletterInput.classList.add('error');
+                    newsletterInput.setCustomValidity('Please enter a valid email address');
+                } else {
+                    newsletterInput.classList.remove('error');
+                    newsletterInput.setCustomValidity('');
+                }
+            });
+        }
+    }
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
@@ -95,33 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Form enhancement
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            const submitBtn = this.querySelector('.submit-btn');
-            
-            if (submitBtn) {
-                submitBtn.innerHTML = 'Sending...';
-                submitBtn.disabled = true;
-                submitBtn.style.background = 'linear-gradient(135deg, #999999 0%, #777777 100%)';
-            }
-        });
-
-        // Enhanced form validation
-        const inputs = contactForm.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                if (this.hasAttribute('required') && !this.value.trim()) {
-                    this.style.borderColor = '#e53e3e';
-                    this.style.boxShadow = '0 0 0 4px rgba(229, 62, 62, 0.1)';
-                } else {
-                    this.style.borderColor = '#E2E8F0';
-                    this.style.boxShadow = 'none';
-                }
-            });
-        });
-    }
 
     // Initialize
     window.addEventListener('scroll', handleHeaderScroll, { passive: true });
@@ -135,7 +240,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.innerWidth > 768 && navLinks) {
                 navLinks.classList.remove('active');
                 if (mobileMenuBtn) {
-                    mobileMenuBtn.innerHTML = '<span>☰</span>';
+                    mobileMenuBtn.innerHTML = '<span aria-hidden="true">☰</span>';
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 }
                 document.body.style.overflow = '';
             }
