@@ -744,7 +744,7 @@ function populateLogistics() {
         </div>
     `;
     
-    description.textContent = customDescription;
+    description.textContent = 'Please provide logistics details for your partnership.';
     container.innerHTML = logisticsHTML;
     
     // Add validation for logistics fields
@@ -1187,16 +1187,7 @@ function fixContinueButtonLogic() {
 // Enhanced setup for all interest options
 function setupEnhancedInterestHandlers() {
     setTimeout(() => {
-        // Initialize partnership data if not exists
-        if (!window.partnershipData) {
-            window.partnershipData = {
-                selectedType: 'corporate',
-                selectedInterests: [],
-                contactInfo: {},
-                logistics: {},
-                currentStep: 1
-            };
-        }
+        window.partnershipData = partnershipData;
         
         const continueBtn = document.querySelector('button[disabled="true"]') || document.querySelector('button:disabled');
         if (!continueBtn) {
@@ -1219,7 +1210,7 @@ function setupEnhancedInterestHandlers() {
                 if (this.classList.contains('selected')) {
                     // Deselect
                     this.classList.remove('selected');
-                    window.partnershipData.selectedInterests = window.partnershipData.selectedInterests.filter(id => id !== interestId);
+                    partnershipData.selectedInterests = partnershipData.selectedInterests.filter(id => id !== interestId);
                     
                     // Hide input if exists
                     const otherInput = this.querySelector('.other-input, .other-input-textarea');
@@ -1230,8 +1221,8 @@ function setupEnhancedInterestHandlers() {
                 } else {
                     // Select (allow multiple selections)
                     this.classList.add('selected');
-                    if (!window.partnershipData.selectedInterests.includes(interestId)) {
-                        window.partnershipData.selectedInterests.push(interestId);
+                    if (!partnershipData.selectedInterests.includes(interestId)) {
+                        partnershipData.selectedInterests.push(interestId);
                     }
                     
                     // Show input field if it has one
@@ -1248,7 +1239,7 @@ function setupEnhancedInterestHandlers() {
                                          Array.from(document.querySelectorAll('button')).find(btn => btn.textContent.trim() === 'Continue');
                 
                 if (currentContinueBtn) {
-                    if (window.partnershipData.selectedInterests.length > 0) {
+                    if (partnershipData.selectedInterests.length > 0) {
                         currentContinueBtn.classList.remove('disabled');
                         currentContinueBtn.disabled = false;
                         currentContinueBtn.removeAttribute('disabled');
