@@ -15,6 +15,51 @@ body {
     overflow-x: hidden;
 }
 
+/* Screen Reader Only - for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Form Validation and Hints */
+.error-message {
+    display: block;
+    color: #E53E3E;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    min-height: 1.25rem;
+    font-weight: 500;
+}
+
+.form-hint {
+    display: block;
+    color: #718096;
+    font-size: 0.8125rem;
+    margin-top: 0.25rem;
+    font-style: italic;
+}
+
+.form-group input.error,
+.form-group textarea.error,
+.form-group select.error {
+    border-color: #E53E3E;
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+.form-group input.success,
+.form-group textarea.success,
+.form-group select.success {
+    border-color: #48BB78;
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.1);
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;

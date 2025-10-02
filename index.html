@@ -14,55 +14,55 @@
 <body>
     <header>
         <nav>
-            <a href="#home" class="logo" aria-label="Return to home">
-                <img src="MCC-Logo.jpeg" alt="UST MCC Logo" class="logo-img">
+            <a href="#home" class="logo" aria-label="Return to home - UST Management Consulting Club">
+                <img src="ust-logo.svg" alt="University of St. Thomas Management Consulting Club Logo" class="logo-img">
                 <div class="logo-text">
                     <h1>UST MCC</h1>
                     <p class="logo-subtitle">University of St. Thomas</p>
                 </div>
             </a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#partners">Partners</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul class="nav-links" role="navigation" aria-label="Main navigation">
+                <li><a href="#about" aria-label="Navigate to About section">About</a></li>
+                <li><a href="#team" aria-label="Navigate to Leadership Team section">Team</a></li>
+                <li><a href="#partners" aria-label="Navigate to Partnership Opportunities section">Partners</a></li>
+                <li><a href="#resources" aria-label="Navigate to Member Resources section">Resources</a></li>
+                <li><a href="#contact" aria-label="Navigate to Contact section">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
-                <span>☰</span>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile navigation menu" aria-expanded="false">
+                <span aria-hidden="true">☰</span>
             </button>
         </nav>
     </header>
 
-    <main>
-        <section id="home" class="hero">
+    <main role="main">
+        <section id="home" class="hero" aria-labelledby="hero-heading">
             <div class="hero-content">
-                <h2>Management Consulting Club</h2>
+                <h2 id="hero-heading">Management Consulting Club</h2>
                 <p class="hero-subtitle">University of St. Thomas</p>
                 <p>Empowering Tommies to excel in strategic consulting through experiential learning, professional development, and industry connections</p>
-                <a href="https://tommielink.stthomas.edu/organization/managementconsultingclub/events" class="cta-button" target="_blank">View Events</a>
+                <a href="https://tommielink.stthomas.edu/organization/managementconsultingclub/events" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="View upcoming events on TommieLink (opens in new tab)">View Events</a>
             </div>
         </section>
 
-        <section id="about" class="about">
+        <section id="about" class="about" aria-labelledby="about-heading">
             <div class="container">
-                <h2>About Our Club</h2>
+                <h2 id="about-heading">About Our Club</h2>
                 <p>The University of St. Thomas Management Consulting Club is a student organization dedicated to developing the next generation of strategic consultants. We provide hands-on experience through real client projects, case competitions, and professional development opportunities.</p>
                 
-                <div class="features">
-                    <div class="feature">
+                <div class="features" role="list" aria-label="Club features and opportunities">
+                    <div class="feature" role="listitem">
                         <h3>Client Projects</h3>
                         <p>Work with real organizations to solve complex business challenges</p>
                     </div>
-                    <div class="feature">
+                    <div class="feature" role="listitem">
                         <h3>Case Competitions</h3>
                         <p>Compete in regional and national case study competitions</p>
                     </div>
-                    <div class="feature">
+                    <div class="feature" role="listitem">
                         <h3>Professional Development</h3>
                         <p>Build consulting skills through workshops and industry connections</p>
                     </div>
-                    <div class="feature">
+                    <div class="feature" role="listitem">
                         <h3>Networking Events</h3>
                         <p>Connect with consulting professionals, alumni, and industry leaders</p>
                     </div>
@@ -561,36 +561,38 @@
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="contact" class="contact" aria-labelledby="contact-heading">
             <div class="container">
-                <h2>Get Involved</h2>
+                <h2 id="contact-heading">Get Involved</h2>
                 <p>Ready to join the next generation of strategic consultants at St. Thomas?</p>
                 <div class="contact-content">
                     <div class="contact-info">
                         <div class="contact-item">
                             <h3>Join Our Organization</h3>
-                            <p><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub" target="_blank">Visit our TommieLink page</a></p>
+                            <p><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub" target="_blank" rel="noopener noreferrer" aria-label="Visit our TommieLink page (opens in new tab)">Visit our TommieLink page</a></p>
                         </div>
                         <div class="contact-item">
                             <h3>Upcoming Events</h3>
-                            <p><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub/events" target="_blank">View events and meetings</a></p>
+                            <p><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub/events" target="_blank" rel="noopener noreferrer" aria-label="View upcoming events and meetings on TommieLink (opens in new tab)">View events and meetings</a></p>
                         </div>
                     </div>
                     
                     <div class="contact-form-section">
-                        <h3>Contact Us</h3>
-                        <form class="contact-form" action="https://formspree.io/f/xdovwwqy" method="POST">
+                        <h3 id="contact-form-heading">Contact Us</h3>
+                        <form class="contact-form" action="https://formspree.io/f/xdovwwqy" method="POST" aria-labelledby="contact-form-heading" novalidate>
                             <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required>
+                                <label for="name">Full Name <span aria-label="required">*</span></label>
+                                <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error" autocomplete="name">
+                                <span class="error-message" id="name-error" role="alert" aria-live="polite"></span>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
+                                <label for="email">Email Address <span aria-label="required">*</span></label>
+                                <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error" autocomplete="email">
+                                <span class="error-message" id="email-error" role="alert" aria-live="polite"></span>
                             </div>
                             <div class="form-group">
                                 <label for="year">Class Year</label>
-                                <select id="year" name="year">
+                                <select id="year" name="year" aria-describedby="year-hint">
                                     <option value="">Select Year</option>
                                     <option value="Freshman">Freshman</option>
                                     <option value="Sophomore">Sophomore</option>
@@ -599,10 +601,11 @@
                                     <option value="Graduate">Graduate Student</option>
                                     <option value="Alumni">Alumni</option>
                                 </select>
+                                <span class="form-hint" id="year-hint">Optional</span>
                             </div>
                             <div class="form-group">
                                 <label for="interest">Area of Interest</label>
-                                <select id="interest" name="interest">
+                                <select id="interest" name="interest" aria-describedby="interest-hint">
                                     <option value="">Select Interest</option>
                                     <option value="General Membership">General Membership</option>
                                     <option value="Case Competitions">Case Competitions</option>
@@ -611,15 +614,18 @@
                                     <option value="Professional Development">Professional Development</option>
                                     <option value="Other">Other</option>
                                 </select>
+                                <span class="form-hint" id="interest-hint">Optional</span>
                             </div>
                             <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Tell us about your interest in the club..." required></textarea>
+                                <label for="message">Message <span aria-label="required">*</span></label>
+                                <textarea id="message" name="message" rows="5" placeholder="Tell us about your interest in the club..." required aria-required="true" aria-describedby="message-error message-hint"></textarea>
+                                <span class="form-hint" id="message-hint">Share your background, interests, and what you hope to gain from the club</span>
+                                <span class="error-message" id="message-error" role="alert" aria-live="polite"></span>
                             </div>
                             <input type="hidden" name="_next" value="https://management-consulting.club">
                             <input type="hidden" name="_subject" value="New Contact Form Submission - UST MCC">
                             <input type="hidden" name="_replyto" value="miga3660@stthomas.edu">
-                            <button type="submit" class="submit-btn">Send Message</button>
+                            <button type="submit" class="submit-btn" aria-label="Submit contact form">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -627,12 +633,12 @@
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo" aria-label="Site footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="MCC-Logo.jpeg" alt="UST MCC" class="footer-logo-img">
+                        <img src="ust-logo.svg" alt="University of St. Thomas Management Consulting Club" class="footer-logo-img">
                         <div class="footer-logo-text">
                             <h3>UST MCC</h3>
                             <p>University of St. Thomas</p>
@@ -643,22 +649,25 @@
                 
                 <div class="footer-section">
                     <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#team">Leadership</a></li>
-                        <li><a href="#partners">Partners</a></li>
-                        <li><a href="#resources">Resources</a></li>
-                        <li><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub" target="_blank">TommieLink</a></li>
-                    </ul>
+                    <nav aria-label="Footer navigation">
+                        <ul class="footer-links">
+                            <li><a href="#about" aria-label="Navigate to About section">About</a></li>
+                            <li><a href="#team" aria-label="Navigate to Leadership Team section">Leadership</a></li>
+                            <li><a href="#partners" aria-label="Navigate to Partnership Opportunities section">Partners</a></li>
+                            <li><a href="#resources" aria-label="Navigate to Member Resources section">Resources</a></li>
+                            <li><a href="https://tommielink.stthomas.edu/organization/managementconsultingclub" target="_blank" rel="noopener noreferrer" aria-label="Visit our TommieLink page (opens in new tab)">TommieLink</a></li>
+                        </ul>
+                    </nav>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Newsletter</h4>
+                    <h4 id="newsletter-heading">Newsletter</h4>
                     <p class="newsletter-text">Stay updated with club events, opportunities, and industry insights.</p>
-                    <form class="newsletter-form" action="https://formspree.io/f/xdovwwqy" method="POST">
+                    <form class="newsletter-form" action="https://formspree.io/f/xdovwwqy" method="POST" aria-labelledby="newsletter-heading">
                         <div class="newsletter-input-group">
-                            <input type="email" name="newsletter_email" placeholder="Enter your email" required>
-                            <button type="submit" class="newsletter-btn">Subscribe</button>
+                            <label for="newsletter_email" class="sr-only">Email address for newsletter</label>
+                            <input type="email" id="newsletter_email" name="newsletter_email" placeholder="Enter your email" required aria-required="true" autocomplete="email">
+                            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">Subscribe</button>
                         </div>
                         <input type="hidden" name="_subject" value="Newsletter Subscription - UST MCC">
                         <input type="hidden" name="_replyto" value="miga3660@stthomas.edu">
@@ -670,11 +679,11 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <p>&copy; 2024 UST Management Consulting Club. All rights reserved.</p>
-                    <div class="footer-legal">
-                        <a href="privacy-policy.html">Privacy Policy</a>
-                        <span class="separator">•</span>
-                        <a href="terms-of-service.html">Terms of Service</a>
-                    </div>
+                    <nav class="footer-legal" aria-label="Legal information">
+                        <a href="privacy-policy.html" aria-label="Read our privacy policy">Privacy Policy</a>
+                        <span class="separator" aria-hidden="true">•</span>
+                        <a href="terms-of-service.html" aria-label="Read our terms of service">Terms of Service</a>
+                    </nav>
                 </div>
             </div>
         </div>
