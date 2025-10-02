@@ -1,6 +1,6 @@
 // UST Management Consulting Club Website JavaScript
 
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
     // Enhanced mobile menu functionality with ARIA attributes
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 250);
     });
-});
+})();
 
     // Additional form enhancements for mobile
     function enhanceFormForMobile() {
