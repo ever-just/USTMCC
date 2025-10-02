@@ -1547,3 +1547,94 @@ window.populateInterests = function() {
     fixContinueButtonLogic();
     setupEnhancedInterestHandlers();
 };
+
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    if (!faqItems || faqItems.length === 0) return;
+    
+    faqItems.forEach((item, index) => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        if (!question || !answer) return;
+        
+        question.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            if (isExpanded) {
+                closeAccordion(item, question);
+            } else {
+                openAccordion(item, question);
+            }
+        });
+        
+        question.addEventListener('keydown', function(e) {
+            const key = e.key;
+            
+            if (key === 'Enter' || key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+            else if (key === 'ArrowDown') {
+                e.preventDefault();
+                focusNextAccordion(index);
+            }
+            else if (key === 'ArrowUp') {
+                e.preventDefault();
+                focusPreviousAccordion(index);
+            }
+            else if (key === 'Home') {
+                e.preventDefault();
+                focusFirstAccordion();
+            }
+            else if (key === 'End') {
+                e.preventDefault();
+                focusLastAccordion();
+            }
+        });
+    });
+    
+    function openAccordion(item, question) {
+        item.classList.add('active');
+        question.setAttribute('aria-expanded', 'true');
+    }
+    
+    function closeAccordion(item, question) {
+        item.classList.remove('active');
+        question.setAttribute('aria-expanded', 'false');
+    }
+    
+    function focusNextAccordion(currentIndex) {
+        const questions = document.querySelectorAll('.faq-question');
+        const nextIndex = (currentIndex + 1) % questions.length;
+        questions[nextIndex].focus();
+    }
+    
+    function focusPreviousAccordion(currentIndex) {
+        const questions = document.querySelectorAll('.faq-question');
+        const prevIndex = currentIndex === 0 ? questions.length - 1 : currentIndex - 1;
+        questions[prevIndex].focus();
+    }
+    
+    function focusFirstAccordion() {
+        const questions = document.querySelectorAll('.faq-question');
+        if (questions.length > 0) {
+            questions[0].focus();
+        }
+    }
+    
+    function focusLastAccordion() {
+        const questions = document.querySelectorAll('.faq-question');
+        if (questions.length > 0) {
+            questions[questions.length - 1].focus();
+        }
+    }
+}
+
+// Initialize FAQ when page loads
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFAQ);
+} else {
+    initFAQ();
+}
