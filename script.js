@@ -185,7 +185,6 @@
         });
     });
 
-    // Intersection Observer for scroll animations
     const observerOptions = {
         threshold: 0.15,
         rootMargin: '0px 0px -80px 0px'
@@ -198,8 +197,9 @@
                 const delay = Array.from(element.parentNode.children).indexOf(element) * 120;
                 
                 setTimeout(() => {
+                    element.classList.add('animated');
                     element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
+                    element.style.transform = 'translateY(0) scale(1) rotateX(0)';
                 }, delay);
                 
                 observer.unobserve(element);
@@ -210,6 +210,70 @@
     // Observe all elements that should animate
     document.querySelectorAll('.feature, .officer, .resource, .contact-item, .contact-form-section').forEach(el => {
         observer.observe(el);
+    });
+
+    const hero = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
+    
+    if (hero && heroContent) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroHeight = hero.offsetHeight;
+            
+            if (scrolled < heroHeight) {
+                const parallaxSpeed = 0.5;
+                heroContent.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                heroContent.style.opacity = 1 - (scrolled / heroHeight) * 0.8;
+            }
+        }, { passive: true });
+    }
+
+    function animateCounter(element, target, duration = 2000) {
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = Math.round(target);
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.round(current);
+            }
+        }, 16);
+    }
+
+    // Observe counters
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-target'));
+                if (target) {
+                    animateCounter(counter, target);
+                    counterObserver.unobserve(counter);
+                }
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-target]').forEach(counter => {
+        counterObserver.observe(counter);
+    });
+
+    const headingObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('heading-revealed');
+                headingObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('section h2').forEach(heading => {
+        heading.classList.add('heading-hidden');
+        headingObserver.observe(heading);
     });
 
     // Enhanced header scroll effect
@@ -247,6 +311,85 @@
             }
         }, 250);
     });
+    function showToast(message, type = 'info', duration = 3000) {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.innerHTML = `
+            <div class="toast-icon">
+                ${type === 'success' ? '✓' : type === 'error' ? '✕' : 'ⓘ'}
+            </div>
+            <div class="toast-message">${message}</div>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.classList.add('toast-show'), 10);
+        
+        setTimeout(() => {
+            toast.classList.remove('toast-show');
+            setTimeout(() => toast.remove(), 300);
+        }, duration);
+    }
+
+    window.showToast = showToast;
+
+    // Enhanced button ripple effect
+    document.querySelectorAll('.cta-btn, .submit-btn, .step-btn, .subscribe-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            
+            const moveX = x * 20;
+            const moveY = y * 20;
+            
+            const heroBackground = heroSection.querySelector('.hero-background');
+            if (heroBackground) {
+                heroBackground.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+            }
+        });
+    }
+
+    function setLoadingState(element, isLoading) {
+        if (isLoading) {
+            element.classList.add('loading');
+            element.disabled = true;
+            const originalText = element.textContent;
+            element.setAttribute('data-original-text', originalText);
+            element.innerHTML = '<span class="spinner"></span> Loading...';
+        } else {
+            element.classList.remove('loading');
+            element.disabled = false;
+            const originalText = element.getAttribute('data-original-text');
+            if (originalText) {
+                element.textContent = originalText;
+            }
+        }
+    }
+
+    window.setLoadingState = setLoadingState;
+
 })();
 
     // Additional form enhancements for mobile

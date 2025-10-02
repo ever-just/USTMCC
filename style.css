@@ -2531,6 +2531,50 @@ html {
     transform: translateY(0);
 }
 
+/* Advanced scroll animations */
+.feature, .officer, .resource, .contact-item, .contact-form-section {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature.animated, .officer.animated, .resource.animated, 
+.contact-item.animated, .contact-form-section.animated {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Heading reveal animations */
+section h2.heading-hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+section h2.heading-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section h2.heading-revealed::after {
+    animation: expandLine 0.8s ease-out forwards;
+}
+
+@keyframes expandLine {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80px;
+    }
+}
+
+/* Parallax hero content */
+.hero-content {
+    will-change: transform, opacity;
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+
 /* Loading state animations */
 .loading {
     position: relative;
@@ -2551,4 +2595,135 @@ html {
         transparent
     );
     animation: shimmer 2s infinite;
+}
+
+/* Toast Notification System */
+.toast {
+    position: fixed;
+    bottom: -100px;
+    right: 2rem;
+    background: white;
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.toast-show {
+    bottom: 2rem;
+}
+
+.toast-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+}
+
+.toast-error .toast-icon {
+    background: linear-gradient(135deg, #f56565, #e53e3e);
+    color: white;
+}
+
+.toast-info .toast-icon {
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    color: white;
+}
+
+.toast-message {
+    color: #2D3748;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: rippleEffect 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Spinner for loading states */
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Enhanced cursor interaction */
+.hero-background {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+}
+
+/* Gradient animation for backgrounds */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-animated {
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+}
+
+/* Mobile toast adjustments */
+@media (max-width: 768px) {
+    .toast {
+        right: 1rem;
+        left: 1rem;
+        min-width: auto;
+        max-width: calc(100vw - 2rem);
+    }
+    
+    .toast-show {
+        bottom: 1rem;
+    }
 }
