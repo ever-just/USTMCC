@@ -2508,9 +2508,6 @@ html {
     }
 }
 
-/* Scroll reveal animation classes */
-.scroll-reveal {
-
 @keyframes heroEntrance {
     from {
         opacity: 0;
@@ -2522,6 +2519,8 @@ html {
     }
 }
 
+/* Scroll reveal animation classes */
+.scroll-reveal {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
