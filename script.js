@@ -208,7 +208,7 @@
     }, observerOptions);
 
     // Observe all elements that should animate
-    document.querySelectorAll('.feature, .officer, .resource, .contact-item, .contact-form-section').forEach(el => {
+    document.querySelectorAll('.feature, .officer, .resource, .contact-item, .contact-form-section, .stat-card, .testimonial-card').forEach(el => {
         observer.observe(el);
     });
 
@@ -389,6 +389,35 @@
     }
 
     window.setLoadingState = setLoadingState;
+
+    // Scroll Progress Indicator
+    const scrollProgress = document.querySelector('.scroll-progress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.pageYOffset / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+            scrollProgress.setAttribute('aria-valuenow', Math.round(scrolled));
+        }, { passive: true });
+    }
+
+    const backToTopBtn = document.querySelector('.back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
 })();
 
